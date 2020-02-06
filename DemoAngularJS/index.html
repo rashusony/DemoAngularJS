@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html ng-app="Demo">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <link href="indexStyle.css" rel="stylesheet" />
+    <script src="Scripts/ScriptStudent.js"></script>
+</head>
+<body>
+    <table style="font-family:Arial, Helvetica, sans-serif">
+        <tr>
+            <td colspan="2"  class="header">
+                <h2>Website Header</h2>
+            </td>
+        </tr>
+        <tr>
+            <td class="leftMenu">
+                <a href="#!/Home">Home</a>
+                <a href="#!/Courses">Courses</a>
+                <a href="#!/Students">Students</a>
+            </td>
+            <td class="mainContent">
+                <ng-view></ng-view>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="footer">
+                Website Footer
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

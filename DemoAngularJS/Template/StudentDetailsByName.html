@@ -1,0 +1,24 @@
+﻿<head>
+
+    <link href="../Style.css" rel="stylesheet" />
+</head>
+
+<h2>Student Details By name</h2>
+<table style="border:1px solid black">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>City</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="student in student">
+            <td>{{student.Name}}</td>
+            <td>{{student.Gender}}</td>
+            <td>{{student.City}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<a href="#!/Students">Back to List</a>

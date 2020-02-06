@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Script.js"></script>
+    <script src="Scripts/Filters.js"></script>
+    <link href="Style.css" rel="stylesheet" />
+    
+</head>
+<body>
+    10+20={{10+20}}<br />
+    {{['ram','shaym','raghu'][2]}}<br />
+    {{1==2}}
+
+    <div ng-controller="myController">
+        <table>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    <input type="text" ng-model="emp.firstName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+                    <input type="text" ng-model="emp.lastName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <input type="text" ng-model="emp.gender" />
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <table>
+            <tr>
+                <td>
+                    First Name:
+                </td>
+                <td>
+                    {{emp.firstName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name:
+                </td>
+                <td>
+                    {{emp.lastName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    {{emp.gender}}
+                </td>
+            </tr>
+        </table>
+        <hr />
+
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Like</td>
+                    <td>Dislike</td>
+                    <td>Like/Dislike</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="obj in tech">
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.like}}</td>
+                    <td>{{obj.dislike}}</td>
+                    <td>
+                        <input type="button" value="Like" ng-click="countLike(obj)" />
+                        <input type="button" value="Dislike" ng-click="countdisike(obj)" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+        Sort BY:<select ng-model="sortBy">
+            <option value="name">Name</option>
+            <option value="Gender">Gender</option>
+            <option value="DOJ">DOJ</option>
+            <option value="salary">Salary</option>
+        </select>
+        <br /><br />
+        <input type="text" placeholder="Search By Name" ng-model="searchBy.name" />
+        <input type="text" placeholder="Search By Gender" ng-model="searchBy.gender" />
+        <br /><br />
+        Hide salary:<input type="checkbox" ng-model="hideSalary" />
+        <br /><br />
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td ng-hide="hideSalary">Salary</td>
+                    <td ng-show="hideSalary">Salary</td>
+                    <td>DOJ</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="emp in emp_deatils|orderBy:sortBy | filter:searchBy">
+                    <td>{{emp.name}}</td>
+                    <td>{{emp.gender | Gender}}</td>
+                    <td ng-hide="hideSalary">{{emp.salary| currency:"Rs":2}}</td>
+                    <td ng-show="hideSalary">#####</td>
+                    <td>{{emp.DOJ| date:"dd/MM/yyyy"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <hr />
+    <div ng-controller="myController">
+        <ul>
+            <li ng-repeat="cnty in country" ng-init="parentIndex=$index">
+                {{cnty.name}}- Index = {{parentIndex}}
+
+                <ul>
+                    <li ng-repeat="city in cnty.city">
+                        {{city.name}} - ParentIndex= {{parentIndex}} , Index = {{$index}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div ng-controller="myController">
+        Select View : <select ng-model="typeView">
+            <option value="EmployeeTable.html">Table</option>
+            <option value="EmployeeViewList.html">List</option>
+        </select>
+        <br /><br />
+
+              <div ng-include="typeView"></div>
+    </div>
+    <hr />
+    <div ng-controller="myController">
+        {{error}}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="test in employeeDB">
+                    <td>{{test.ID}}</td>
+                    <td>{{test.FirstName}}</td>
+                    <td>{{test.LastName}}</td>
+                    <td>{{test.Gender}}</td>
+                    <td>{{test.Salary}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

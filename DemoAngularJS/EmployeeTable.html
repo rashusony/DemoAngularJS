@@ -1,0 +1,18 @@
+﻿<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Gender</td>
+            <td>Salary</td>
+            <td>DOJ</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="emp in emp_deatils">
+            <td>{{emp.name}}</td>
+            <td>{{emp.gender | Gender}}</td>
+            <td>{{emp.salary| currency:"Rs":2}}</td>
+            <td>{{emp.DOJ| date:"dd/MM/yyyy"}}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/angular.min.js"></script>
+</head>
+<body>
+    <form name="stdForm">
+        <p>
+            <label>Name</label>
+            <input type="text" placeholder="name" ng-model="name" required />
+            <span style="color:red" ng-show="stdForm.name.$invalid||stdForm.name.$dirty">
+                <span ng-show="stdForm.name.$error.required">User Name is required</span>
+            </span>
+        </p>
+        <p>
+            <label>Gender</label>
+            <input type="text" placeholder="gender" ng-model="gender" required /><br />
+        </p>
+        <p>
+            <label>City</label>
+            <input type="text" placeholder="city" ng-model="city" required /><br />
+        </p>
+        <button ng-click="saveData()">Add</button>
+    </form>
+    
+</body>
+</html>
